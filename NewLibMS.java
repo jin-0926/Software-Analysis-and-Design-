@@ -1,4 +1,4 @@
-
+import java.util.* ; 
 /**
  * NewLibMS 클래스의 설명을 작성하세요.
  *
@@ -8,12 +8,23 @@
 public class NewLibMS
 {
     // 속성 
-    private ArrayList<Borrower> userDB ; 
+    private String libraryName ;    // 도서관 이름 
+    private ArrayList<Borrower> borrowerDB ; 
     private ArrayList<Loan> loanDB ; 
     private ArrayList<Book> bookDB ; 
     
     
-    // NewLibMS 생성자가 클래스 다이어그램에 반영되지 않아 작성하지 않음 . 
+    /**
+     * NewLibMS 클래스의 객체 생성자
+     */
+    public NewLibMS(String libraryName)
+    {
+        this.libraryName = libraryName ;  // 도서관 이름 지정 
+        borrowerDB = new ArrayList<Borrower> () ;
+        loanDB = new ArrayList<Loan> () ; 
+        bookDB = new ArrayList<Book> () ; 
+        
+    }
     
     /**
      * borrowBook() : 학번과 책 등록 번호를 토대로 대출 객체를 생성하는 메소드 
@@ -21,34 +32,52 @@ public class NewLibMS
      * @param     학번 (studentId) , 책 등록 번호 (bookID)
      * @return    대출 객체 (Loan)
      */
-    public Loan borrowBook(String studentID , String bookID)
+    public String borrowBook(String borrowerID , String bookID)
     {
-        Loan loan = new Loan(studentID, bookID) ; 
-        return laon ; 
+        borrowerDB.findBorrower(borrowerID) ; 
+        bookDB.findBorrower(bookID) ; 
     }
 
     /**
-     * registerBook() : 신규 책을 생성 후 책 DB 등록하고 책을 반환하는 메소드 ..? 
+     * registerBook() : 신규 책 등록 후 그 내용을 고지하는 메소드.  
      *
      * @param     책 제목(title), 저자(author), 책 등록번호(bookId)
      * @return    책 객체(Book)
      */
-    public Book registerBook(String title , String author, String bookId)
+    public String registerBoook(String title , String author, String bookID)
     {
-        Book book = new Book(title,author,bookId) ; 
-
+        Book registeredBook = bookDB.findBook(bookID) ;   // 향후 getID() 추가 예정 
+        
+        if (registeredBook != null) { // 이미 등록된 책일 경우 
+            String errorMessage = "이미 등록된 책이어서 신규 등록이 불가합니다" ;   //  seq dgm과 동일하게 작성
+            return errorMessage ;  
+        }
+        
+        Book book = new Book(title,author,bookID) ; 
+        bookDB.saveBook(book) ;   // 책DB에 저장 
+        String message = "신규 책 등록이 완료됨 !" ;  
+        return message ; 
     }
 
     /**
-     * findBook() : 책 등록 번호를 통해 책DB에서 책 객체를 찾아 반환하는 메소드. 
+     * registerBorrower() : 신규 이용자 등록 후 그 내용을 고지하는 메소드 . 
      *
      * @param    책 등록 번호 (bookID)
      * @return   책 객체 (Book)
      */
-    public Book findBook(String bookId) 
+    public String registerBorrower(String name, String borrowerID) 
     {
-        Book finededBook = bookDB.findBook(bookId) ;
-        return findedBook ; 
+        Borrower registeredBorrower = borrowerDB.findBorrower(borrowerID) ;  // 향후 getID() 추가 예정 
+        
+        if (registeredBorrower != null) { // 이미 등록된 이용자일 경우 오류 메시지 
+            String errorMessage = "이미 등록된 이용자여서 신규 등록이 불가합니다" ;  // seq dgm과 동일하게 작성
+            return errorMessage ; 
+        }
+        
+        String message = "신규 이용자 등록이 가능합니다 ! " ; 
+        Borrower borrower = new Borrower(name, borrowerID) ; 
+        borrrowerDB.saveBook(borrower) ; 
+        return message ; 
     }
 
 
