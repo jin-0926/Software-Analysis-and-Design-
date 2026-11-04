@@ -1,5 +1,4 @@
 import java.util.*;
-
 /**
  * Loan 이용자 객체와 책 객체를 입력받아 대출객체를 만드는 class
  *

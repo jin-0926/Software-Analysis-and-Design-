@@ -1,33 +1,35 @@
 import java.util.* ; 
 /**
- * NewLibMS 클래스 : 책 대출, 신규 이용자 등록, 신규 책 등록 기능을 제공하는 도서관 관리 시스템의 클래스 .  
+ * NewLibMS 클래스 : 책 대출, 신규 이용자 등록, 신규 책 등록 기능을 
+ * 제공하는 도서관 관리 시스템의 클래스 .  
  *
- * @author (2025957072 강서윤)
+ * @author (2025957072 강서윤, 2025320018 진시원)
  * @version (2026-11-04)
  */
 public class NewLibMS
 {
-    // 속성 
-    private String libraryName ;    // 도서관 이름 
-    private ArrayList<Borrower> borrowerDB ; 
-    private ArrayList<Loan> loanDB ; 
-    private ArrayList<Book> bookDB ; 
+    private String libraryName ;
+    private BorrowerDB borrowerDB ; 
+    private LoanDB loanDB ; 
+    private BookDB bookDB ; 
     
     
     /**
      * NewLibMS 클래스의 객체 생성자
+     * 
+     * @param 도서관의 이름
      */
     public NewLibMS(String libraryName)
     {
-        this.libraryName = libraryName ;  // 도서관 이름 지정 
-        borrowerDB = new ArrayList<Borrower> () ;
-        loanDB = new ArrayList<Loan> () ; 
-        bookDB = new ArrayList<Book> () ; 
-        
+        this.libraryName = libraryName ; 
+        this.borrowerDB = new BorrowerDB() ;
+        this.loanDB = new LoanDB() ;
+        this.bookDB =new BookDB() ;
     }
     
     /**
-     * borrowBook() : 학번과 책 등록 번호를 토대로 대출 객체를 생성하는 메소드 
+     * borrowBook() : 학번과 책 등록 번호를 토대로 대출 객체를 
+     * 생성하는 메소드 
      *
      * @param     학번 (studentId) , 책 등록 번호 (bookID)
      * @return    대출 객체 (Loan)
@@ -79,6 +81,4 @@ public class NewLibMS
         borrrowerDB.saveBook(borrower) ; 
         return message ; 
     }
-
-
 }
