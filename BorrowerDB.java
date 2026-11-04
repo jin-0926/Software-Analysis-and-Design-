@@ -27,7 +27,7 @@ public class BorrowerDB
      */
     public Borrower findBorrower(String borrowerID)
     {
-        Borrower borower = new Borrower(borrowerID) ; // 향후 getID() 를 추가할 예정 
+        Borrower borrower = new Borrower(borrowerID) ; // 향후 getID() 를 추가할 예정 
         
         Iterator<Borrower> it = bookDB.iterator() ; 
         
@@ -51,8 +51,8 @@ public class BorrowerDB
      */
     public void saveBorrower(Borrower borrower)
     {
-        borrowerDB.saveBorrower(borrower) ; 
+        borrowerDB.add(borrower) ; 
         
-        System.out.pritnln("test : saveBorower 메소드 정상 작동")
+        System.out.println("test : saveBorower 메소드 정상 작동") ; 
     }
 }
