@@ -15,7 +15,7 @@ public class LoanDB
     public LoanDB()
     {
         loanDB = new ArrayList<Loan> () ;   
-        
+        System.out.println("대출 DB가 생성되었습니다 !") ; 
     }
     
     /**

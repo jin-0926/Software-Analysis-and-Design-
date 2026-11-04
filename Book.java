@@ -32,6 +32,7 @@ public class Book
      */
     public void setStatus(String status)
     {
+        this.status = status ;
         System.out.println("Book의 대출 여부가 설정되었습니다.");
     }
 }

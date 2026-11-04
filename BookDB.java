@@ -14,7 +14,8 @@ public class BookDB
      */
     public BookDB()
     {
-        bookDB = new ArrayList<Book> () ;       
+        bookDB = new ArrayList<Book> () ;     
+        System.out.println("책 DB가 생성되었습니다. ") ; 
     }
     
     /**
@@ -46,7 +47,7 @@ public class BookDB
     public void saveBook(Book book)
     {
         bookDB.add(book) ; 
-        System.out.println("test : saveBook 메소드 정상 작동 - 신규 책 등록 완료") ; 
+        System.out.println("test - BookDB - saveBook() 정상 작동 - 신규 책 등록 완료") ; 
     }
 
 }

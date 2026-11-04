@@ -32,7 +32,7 @@ public class Borrower
     public int getLoanCount()
     {
         System.out.println("getLoanCount를 실행했습니다..");
-        return loanCount;
+        return this.loanCount;
     }
 
     /**
@@ -41,6 +41,7 @@ public class Borrower
      */
     public void increaseLoanCount()
     {
+        this.loanCount +=1 ; 
         System.out.println("이용자의 현재 대여 수가 1 증가했습니다.");
     }
 }

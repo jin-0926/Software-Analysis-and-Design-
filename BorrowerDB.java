@@ -15,6 +15,7 @@ public class BorrowerDB
     public BorrowerDB()
     {
           borrowerDB = new ArrayList<Borrower> () ; 
+          System.out.println("이용자DB가 생성되었습니다 !") ; 
     }
     
     /**
@@ -50,6 +51,6 @@ public class BorrowerDB
     {
         borrowerDB.add(borrower) ; 
         
-        System.out.println("test : saveBorower 메소드 정상 작동 - 신규 이용자 등록 ! ") ; 
+        System.out.println("test : saveBorower() 정상 작동 - 신규 이용자 등록 ! ") ; 
     }
 }
