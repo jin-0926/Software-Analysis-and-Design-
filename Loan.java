@@ -17,6 +17,8 @@ public class Loan
      */
     public Loan(Borrower borrower, Book book)
     {
+        this.borrower = borrower;
+        this.book = book;
         System.out.println("Loan 객체가 생성되었습니다.");
     }
 }

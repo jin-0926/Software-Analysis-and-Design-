@@ -18,6 +18,9 @@ public class Borrower
      */
     public Borrower(String name, String stID)
     {
+        this.name = name;
+        this.stID = stID;
+        
         System.out.println("Borrower 객체가 생성되었습니다.");
     }
 
@@ -28,6 +31,8 @@ public class Borrower
      */
     public int getLoanCount()
     {
+        System.out.println("getLoanCount를 실행했습니다..");
+        
         return loanCount;
     }
 

@@ -8,7 +8,7 @@
 public class Book
 {
     private String title;
-    private String athor;
+    private String author;
     private String bookID;
     private String status;
     /**
@@ -18,6 +18,9 @@ public class Book
      */
     public Book(String title, String author, String bookID)
     {
+        this.title = title;
+        this.author = author;
+        this.bookID = bookID;
         System.out.println("Book 객체가 생성되었습니다.");
     }
 
