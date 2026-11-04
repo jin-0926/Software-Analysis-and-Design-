@@ -1,6 +1,6 @@
 import java.util.* ; 
 /**
- * BorrowerDB 클래스의 설명을 작성하세요.
+ * BorrowerDB : 이용자 정보들을 저장하는 데이터 베이스를 수현하는 클래스. 
  *
  * @author (2025957072 강서윤)
  * @version (2026-11-04)
