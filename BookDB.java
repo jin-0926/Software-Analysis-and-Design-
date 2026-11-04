@@ -10,6 +10,14 @@ public class BookDB
     private ArrayList<Book> bookDB ; 
 
     /**
+     * NewLibMS 클래스의 객체 생성자
+     */
+    public BookDB()
+    {
+        bookDB = new ArrayList<Loan> () ;       
+    }
+    
+    /**
      * findBook() : 책 객체를 생성한 후 책DB에서 해당 책을 찾아내 반환하는 메소드 
      *
      * @param     책 등록 번호 (bookID)
@@ -20,14 +28,14 @@ public class BookDB
         Iterator<Book> it = bookDB.iterator() ; 
 
         while(it.hasNext()) {
-            realBook = null ; 
-            realBook = it.next() ;  // bookDB 내 책 객체를 하나씩 읽어옴 .  
-            if (bookID.equals(realbook))  // getID() 추가 예정 (클래스 다이어그램) 
+            Book book= null ; 
+            book = it.next() ;  // bookDB 내 책 객체를 하나씩 읽어옴 .  
+            if (bookID.equals(book))   // 향후 getID() 추가 예정 
             {
-                break ; 
+                return book ; 
             }
         }
-        return realBook ; 
+        return book ; 
     }
 
     /**
