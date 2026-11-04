@@ -1,3 +1,4 @@
+import java.util.*;
 
 /**
  * Loan 이용자 객체와 책 객체를 입력받아 대출객체를 만드는 class
@@ -9,7 +10,7 @@ public class Loan
 {
     private Borrower borrower;
     private Book book;
-
+    private Date dueDate;
     /**
      * Loan 클래스의 객체 생성자
      * 

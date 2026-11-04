@@ -11,6 +11,7 @@ public class Book
     private String author;
     private String bookID;
     private String status;
+    private Loan loanData;
     /**
      * Book 클래스의 객체 생성자
      * 
@@ -25,12 +26,12 @@ public class Book
     }
 
     /**
-     * 예제 메소드 - 이 주석을 사용자에 맞게 바꾸십시오
+     * setStatus 대출 여부를 설정하는 메소드
      *
      * @param 책의 대출여부
      */
     public void setStatus(String status)
     {
-        System.out.println("Book 객체가 생성되었습니다.");
+        System.out.println("Book의 대출 여부가 설정되었습니다.");
     }
 }
