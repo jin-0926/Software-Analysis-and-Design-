@@ -1,4 +1,4 @@
-
+import java.util.* ; 
 /**
  * BookDB 클래스의 설명을 작성하세요.
  *
@@ -14,7 +14,7 @@ public class BookDB
      */
     public BookDB()
     {
-        bookDB = new ArrayList<Loan> () ;       
+        bookDB = new ArrayList<Book> () ;       
     }
     
     /**
@@ -26,13 +26,13 @@ public class BookDB
     public Book findBook(String bookID)
     {
         Iterator<Book> it = bookDB.iterator() ; 
-
+        Book book= null ; 
         while(it.hasNext()) {
-            Book book= null ; 
-            book = it.next() ;  // bookDB 내 책 객체를 하나씩 읽어옴 .  
+            book = it.next() ;  // bookDB 내 책 객체를 하나씩 읽어옴. 
+            
             if (bookID.equals(book))   // 향후 getID() 추가 예정 
             {
-                return book ; 
+                System.out.println("이미 등록된 책이어서 신규 등록이 불가합니다") ;  // Seq dgm 참고해 작성 
             }
         }
         return book ; 
@@ -46,6 +46,7 @@ public class BookDB
     public void saveBook(Book book)
     {
         bookDB.add(book) ; 
+        System.out.println("test : saveBook 메소드 정상 작동 - 신규 책 등록 완료") ; 
     }
 
 }

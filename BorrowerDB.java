@@ -9,14 +9,12 @@ public class BorrowerDB
 {
     private ArrayList<Borrower> borrowerDB; 
 
-    
     /**
      * NewLibMS 클래스의 객체 생성자
      */
     public BorrowerDB()
     {
           borrowerDB = new ArrayList<Borrower> () ; 
-        
     }
     
     /**
@@ -26,19 +24,18 @@ public class BorrowerDB
      * @return    이용자 객체 (Borrower)
      */
     public Borrower findBorrower(String borrowerID)
-    {
-        Borrower borrower = new Borrower(borrowerID) ; // 향후 getID() 를 추가할 예정 
+    {    
+        Iterator<Borrower> it = borrowerDB.iterator() ; 
         
-        Iterator<Borrower> it = bookDB.iterator() ; 
-        
+        Borrower borrower = null ; 
         while(it.hasNext()) {
-            Borrower borrower = it.next() ; 
+            borrower = it.next() ; 
             if (borrower == null) { // 이용자가 시스템에 등록되어 있지 않은 경우 , 
-                System.out.println("등록되지 않은 이용자입니다. 대출이 불가능합니다.") ; 
+                System.out.println("이미 등록된 이용자여서 신규 등록이 불가합니다") ; // Seq Dgm 대로 작성 
                 return null ; 
             }
             else {
-                System.out.println("이용자가 등록되어 있어 대출이 가능합니다. ") ; 
+                System.out.println("신규 이용자 등록이 가능합니다. ") ; 
             }
         }
         return borrower ; 
@@ -53,6 +50,6 @@ public class BorrowerDB
     {
         borrowerDB.add(borrower) ; 
         
-        System.out.println("test : saveBorower 메소드 정상 작동") ; 
+        System.out.println("test : saveBorower 메소드 정상 작동 - 신규 이용자 등록 ! ") ; 
     }
 }
