@@ -17,8 +17,16 @@ public class Loan
      */
     public Loan(Borrower borrower, Book book)
     {
+        // 날짜 관련 설정 필요 (3)
+        
+        // Loan ---> 이용자, 책 
         this.borrower = borrower;
         this.book = book;
+        
+        // 이용자 , 책 ---> Loan 
+        borrower.attachLoan(this);
+        book.attachLoan(this) ; 
+        
         System.out.println("Loan 객체가 생성되었습니다.");
     }
 }

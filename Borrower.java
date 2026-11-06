@@ -44,4 +44,15 @@ public class Borrower
         this.loanCount +=1 ; 
         System.out.println("이용자의 현재 대여 수가 1 증가했습니다.");
     }
+
+    /**
+     * attachLoan() : 이용자(Borrower)을 대출(Loan)에 연결시키는 메소드 ! 
+     *
+     * @param   대출 객체 (Loan)
+     */
+    public void attachLoan(Loan loanData)
+    {
+        this.loanData = loanData  ; 
+    }
+
 }

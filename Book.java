@@ -35,4 +35,16 @@ public class Book
         this.status = status ;
         System.out.println("Book의 대출 여부가 설정되었습니다.");
     }
+
+    /**
+     * attachLoan() : 책(Book)을 대출(Loan)에 연결시키는 메소드 !
+     *
+     * @param  y  메소드의 샘플 파라미터
+     * @return    x 와 y의 합
+     */
+    public void attachLoan(Loan loanData)
+    {
+        this.loanData = loanData ; 
+    }
+
 }
