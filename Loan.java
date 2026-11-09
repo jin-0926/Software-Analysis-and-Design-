@@ -1,4 +1,4 @@
-
+import java.util.*;
 /**
  * Loan 이용자 객체와 책 객체를 입력받아 대출객체를 만드는 class
  *
@@ -9,7 +9,7 @@ public class Loan
 {
     private Borrower borrower;
     private Book book;
-
+    private Date dueDate;
     /**
      * Loan 클래스의 객체 생성자
      * 
@@ -17,8 +17,16 @@ public class Loan
      */
     public Loan(Borrower borrower, Book book)
     {
+        // 날짜 관련 설정 필요 (3)
+        
+        // Loan ---> 이용자, 책 
         this.borrower = borrower;
         this.book = book;
+        
+        // 이용자 , 책 ---> Loan 
+        borrower.attachLoan(this);
+        book.attachLoan(this) ; 
+        
         System.out.println("Loan 객체가 생성되었습니다.");
     }
 }

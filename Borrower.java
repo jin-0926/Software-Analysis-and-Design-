@@ -8,40 +8,51 @@
 public class Borrower
 {
     private String name;
-    private String stID;
+    private String borrowID;
     private int loanCount;
-
+    private Loan loanData;
     /**
      * Borrower 클래스의 객체 생성자
      * 
      * @param 이용자의 이름, 이용자의 학번
      */
-    public Borrower(String name, String stID)
+    public Borrower(String name, String borrowID)
     {
         this.name = name;
-        this.stID = stID;
-        
+        this.borrowID = borrowID;
+        this.loanCount = 0;
         System.out.println("Borrower 객체가 생성되었습니다.");
     }
 
     /**
-     * getLoanCount() - 이용자의 현재 대여 수를 반환한다.
+     * getLoanCount() 이용자의 현재 대여 수를 반환한다.
      *
      * @return    이용자의 현재 대여 수  
      */
     public int getLoanCount()
     {
         System.out.println("getLoanCount를 실행했습니다..");
-        
-        return loanCount;
+        return this.loanCount;
     }
 
     /**
-     * increaseLoanCount() -이용자의 현재 대여 수를 1만큼 증가시킨다.
+     * increaseLoanCount() 이용자의 현재 대여 수를 1만큼 증가시킨다.
      *
      */
     public void increaseLoanCount()
     {
+        this.loanCount +=1 ; 
         System.out.println("이용자의 현재 대여 수가 1 증가했습니다.");
     }
+
+    /**
+     * attachLoan() : 이용자(Borrower)을 대출(Loan)에 연결시키는 메소드 ! 
+     *
+     * @param   대출 객체 (Loan)
+     */
+    public void attachLoan(Loan loanData)
+    {
+        this.loanData = loanData  ; 
+    }
+
 }
