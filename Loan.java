@@ -1,15 +1,17 @@
 import java.util.*;
+import java.time.*;
 /**
  * Loan 이용자 객체와 책 객체를 입력받아 대출객체를 만드는 class
  *
  * @author (2025320018 진시원)
- * @version (2026.11.04)
+ * @version (2026.11.16)
  */
 public class Loan
 {
     private Borrower borrower;
     private Book book;
-    private Date dueDate;
+    private LocalDate loanDate;
+    private LocalDate dueDate;
     /**
      * Loan 클래스의 객체 생성자
      * 
@@ -17,16 +19,24 @@ public class Loan
      */
     public Loan(Borrower borrower, Book book)
     {
-        // 날짜 관련 설정 필요 (3)
-        
-        // Loan ---> 이용자, 책 
         this.borrower = borrower;
         this.book = book;
-        
-        // 이용자 , 책 ---> Loan 
+
         borrower.attachLoan(this);
         book.attachLoan(this) ; 
-        
+
+        this.loanDate = LocalDate.now();
+        this.dueDate = this.loanDate.plusDays(15);
+
         System.out.println("Loan 객체가 생성되었습니다.");
+    }
+
+    /**
+     * getBorrower() - 대출한 이용자를 반환하는 메소드
+     *
+     */
+    public Borrower getBorrower()
+    {
+        return borrower;
     }
 }

@@ -3,46 +3,24 @@
  * Borrower 책을 빌리는 이용자 객체를 생성하는 클래스
  *
  * @author (2025320018 진시원)
- * @version (2026.10.04)
+ * @version (2026.11.16)
  */
 public class Borrower
 {
     private String name;
-    private String borrowID;
-    private int loanCount;
+    private String borrowerID;
+    
     private Loan loanData;
     /**
      * Borrower 클래스의 객체 생성자
      * 
      * @param 이용자의 이름, 이용자의 학번
      */
-    public Borrower(String name, String borrowID)
+    public Borrower(String name, String borrowerID)
     {
         this.name = name;
-        this.borrowID = borrowID;
-        this.loanCount = 0;
+        this.borrowerID = borrowerID;
         System.out.println("Borrower 객체가 생성되었습니다.");
-    }
-
-    /**
-     * getLoanCount() 이용자의 현재 대여 수를 반환한다.
-     *
-     * @return    이용자의 현재 대여 수  
-     */
-    public int getLoanCount()
-    {
-        System.out.println("getLoanCount를 실행했습니다..");
-        return this.loanCount;
-    }
-
-    /**
-     * increaseLoanCount() 이용자의 현재 대여 수를 1만큼 증가시킨다.
-     *
-     */
-    public void increaseLoanCount()
-    {
-        this.loanCount +=1 ; 
-        System.out.println("이용자의 현재 대여 수가 1 증가했습니다.");
     }
 
     /**
@@ -55,4 +33,34 @@ public class Borrower
         this.loanData = loanData  ; 
     }
 
+    /**
+     * getID() - 이용자(borrower)의 학번(borrowID)을 반환하는 메소드
+     *
+     * @return    이용자의 학번
+     */
+    public String getID()
+    {
+        return borrowerID;
+    }
+
+    /**
+     * getLoanCount() 이용자의 현재 대여 수를 반환한다.
+     *
+     * @return    이용자의 현재 대여 수  
+     */
+    public boolean getLoanCount()
+    {
+        System.out.println("getLoanCount를 실행했습니다..");
+        return true;
+    }
+
+    /**
+     * removeLoan(Loan loan) 이용자와 loan 객체의 연결을 끓고 해당 자리를 null로 만드는 메소드
+     *
+     * @param  책을 반납하는 과정에서 연결된 대출 객체
+     */
+    public void removeLoan(Loan loan)
+    {
+        
+    }
 }
