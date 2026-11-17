@@ -25,6 +25,7 @@ public class NewLibMS
         this.borrowerDB = new BorrowerDB() ;
         this.loanDB = new LoanDB() ;
         this.bookDB =new BookDB() ;
+        this.returnDB = new ReturnDB() ; 
     }
 
     /**
