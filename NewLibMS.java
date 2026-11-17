@@ -12,10 +12,21 @@ public class NewLibMS
     private BorrowerDB borrowerDB ; 
     private LoanDB loanDB ; 
     private BookDB bookDB ; 
-    
-    
+
     /**
-     * NewLibMS 클래스의 객체 생성자
+     * NewLibMS 생성자 1 : 도서관 이름을 기본으로 지정해줌. 
+     * 
+     */
+    public NewLibMS()
+    {
+        this.libraryName = "New Library" ;  
+        this.borrowerDB = new BorrowerDB() ;
+        this.loanDB = new LoanDB() ;
+        this.bookDB =new BookDB() ;
+    }
+
+    /**
+     * NewLibMS 생성자 2 : 사용자가 도서관 이름을 세팅할 수 있게끔 함.  
      * 
      * @param 도서관의 이름
      */
@@ -26,7 +37,7 @@ public class NewLibMS
         this.loanDB = new LoanDB() ;
         this.bookDB =new BookDB() ;
     }
-    
+
     /**
      * borrowBook() : 학번과 책 등록 번호를 토대로 대출 객체를 
      * 생성하는 메소드 
@@ -34,10 +45,56 @@ public class NewLibMS
      * @param     학번 (studentId) , 책 등록 번호 (bookID)
      * @return    대출 객체 (Loan)
      */
-    public String borrowBook(String borrowerID , String bookID)
+    public void borrowBook(String borrowerID , String bookID)
     {
-        borrowerDB.findBorrower(borrowerID) ; 
-        bookDB.findBorrower(bookID) ; 
+        // 이용자, 책이 시스템에 존재하는지 찾기 
+        Borrower borrower = borrowerDB.findBorrower(borrowerID) ; 
+        Book book = bookDB.findBook(bookID) ;
+
+        if (borrower == null) {
+            System.out.println("등록되지 않은 이용자입니다. 대출이 불가능합니다. ") ;         
+        } 
+
+        if(book == null) {
+            System.out.println("등록되지 않은 책입니다. 대출이 불가능합니다.") ; 
+        }
+
+        if(borrower!=null && book!=null){
+            System.out.println("[확인] 책과 이용자가 등록되어 있음. ") ;
+
+            // 책의 대출 가능 여부 확인 
+            boolean onLoan = book.isOnLoan() ; 
+
+            if (onLoan == false) {
+                System.out.println("대출 불가 : 책이 이미 대출중입니다.") ; 
+            }
+
+            if(onLoan==true) {
+                System.out.println("[확인] 책이 대출중이 아님") ; 
+
+                // 이용자의 대출 가능 여부 확인
+                boolean result = borrower.isUnderLoanLimit() ; 
+
+                if (result == false){
+                    System.out.println("대출 불가 : 이용자의 대출 가능 권수가 0권입니다. ") ; 
+                } 
+                if (result == true) {
+                    System.out.println("[확인] 이용자의 대출 가능 권수가 1권 이상임.") ; 
+
+                    // 대출 객체 생성 (대출 ---> 이용자, 책)
+                    Loan loan = new Loan(borrower,book) ; 
+
+                    // 양방향 연결 ! (이용자,책 ----> 대출)
+                    borrower.attachLoan(loan) ; 
+                    book.attachLoan(loan) ; 
+
+                    // 대출 DB에 저장
+                    loanDB.saveLoan(loan) ; 
+                    
+                    System.out.println("대출이 성공적으로 완료되었습니다 ! ") ; 
+                }
+            }
+        }
     }
 
     /**
@@ -49,12 +106,12 @@ public class NewLibMS
     public String registerBoook(String title , String author, String bookID)
     {
         Book registeredBook = bookDB.findBook(bookID) ;   // 향후 getID() 추가 예정 
-        
+
         if (registeredBook != null) { // 이미 등록된 책일 경우 
             String errorMessage = "이미 등록된 책이어서 신규 등록이 불가합니다" ;   //  seq dgm과 동일하게 작성
             return errorMessage ;  
         }
-        
+
         Book book = new Book(title,author,bookID) ; 
         bookDB.saveBook(book) ;   // 책DB에 저장 
         String message = "신규 책 등록이 완료됨 !" ;  
@@ -70,15 +127,15 @@ public class NewLibMS
     public String registerBorrower(String name, String borrowerID) 
     {
         Borrower registeredBorrower = borrowerDB.findBorrower(borrowerID) ;  // 향후 getID() 추가 예정 
-        
+
         if (registeredBorrower != null) { // 이미 등록된 이용자일 경우 오류 메시지 
             String errorMessage = "이미 등록된 이용자여서 신규 등록이 불가합니다" ;  // seq dgm과 동일하게 작성
             return errorMessage ; 
         }
-        
+
         String message = "신규 이용자 등록이 가능합니다 ! " ; 
         Borrower borrower = new Borrower(name, borrowerID) ; 
-        borrrowerDB.saveBook(borrower) ; 
+        borrowerDB.saveBorrower(borrower) ; 
         return message ; 
     }
 }

@@ -1,4 +1,4 @@
-
+import java.util.* ; 
 /**
  * Borrower 책을 빌리는 이용자 객체를 생성하는 클래스
  *
@@ -10,7 +10,7 @@ public class Borrower
     private String name;
     private String borrowerID;
     
-    private Loan loanData;
+    private LinkedList<Loan> loanData;
     /**
      * Borrower 클래스의 객체 생성자
      * 
@@ -20,6 +20,7 @@ public class Borrower
     {
         this.name = name;
         this.borrowerID = borrowerID;
+        this.loanData = new LinkedList<Loan>() ; 
         System.out.println("Borrower 객체가 생성되었습니다.");
     }
 
@@ -28,9 +29,9 @@ public class Borrower
      *
      * @param   대출 객체 (Loan)
      */
-    public void attachLoan(Loan loanData)
+    public void attachLoan(Loan loan)
     {
-        this.loanData = loanData  ; 
+        this.loanData.add(loan) ; 
     }
 
     /**
@@ -48,10 +49,20 @@ public class Borrower
      *
      * @return    이용자의 현재 대여 수  
      */
-    public boolean getLoanCount()
+    public boolean isUnderLoanLimit()
     {
+        int loanLimit = 3 ; 
+        boolean returnValue = false ; 
+        if (loanData.size()< loanLimit){
+            returnValue = true ; 
+        }
+        
+        if (loanData.size() >= loanLimit){
+            returnValue = false ; 
+        }
+        
         System.out.println("getLoanCount를 실행했습니다..");
-        return true;
+        return returnValue ; 
     }
 
     /**
