@@ -5,7 +5,7 @@ import java.util.* ;
  * @author (2025957072 강서윤)
  * @version (2026-11-04)
  */
-public class BookDB
+public class BookDB implements Comparable
 {
     private TreeSet<Book> bookElements ; 
 
@@ -17,7 +17,7 @@ public class BookDB
         this.bookElements = new TreeSet<Book> () ;     
         System.out.println("책 DB가 생성되었습니다. ") ; 
     }
-    
+
     /**
      * findBook() : 책 객체를 생성한 후 책DB에서 해당 책을 찾아내 반환하는 메소드 
      *
@@ -30,7 +30,7 @@ public class BookDB
         Book book= null ; 
         while(it.hasNext()) {
             book = it.next() ;  // bookDB 내 책 객체를 하나씩 읽어옴. 
-            
+
             if (bookID.equals(book))   // 향후 getID() 추가 예정 
             {
                 System.out.println("이미 등록된 책이어서 신규 등록이 불가합니다") ;  // Seq dgm 참고해 작성 
@@ -49,5 +49,17 @@ public class BookDB
         bookElements.add(book) ; 
         System.out.println("test - BookDB - saveBook() 정상 작동 - 신규 책 등록 완료") ; 
     }
+
+    /**
+     * compareTo() - 오버라이딩 필요 
+     *
+     * @param  y  메소드의 샘플 파라미터
+     * @return    x 와 y의 합
+     */
+    public int compareTo(String bookID)
+    {
+        return 0 ; 
+    }
+
 
 }

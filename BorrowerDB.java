@@ -5,7 +5,7 @@ import java.util.* ;
  * @author (2025957072 강서윤)
  * @version (2026-11-18)
  */
-public class BorrowerDB
+public class BorrowerDB implements Comparable
 {
     private TreeSet<Borrower> borrowerElements; 
 
@@ -14,10 +14,10 @@ public class BorrowerDB
      */
     public BorrowerDB()
     {
-          this.borrowerElements = new TreeSet<Borrower> () ; 
-          System.out.println("이용자DB가 생성되었습니다 !") ; 
+        this.borrowerElements = new TreeSet<Borrower> () ; 
+        System.out.println("이용자DB가 생성되었습니다 !") ; 
     }
-    
+
     /**
      * findBorrower() : 이용자 아이디(userID)를 토대로 이용자 DB 내 이용자를 찾아내어 이용자 객체를 반환하는 메소드
      *
@@ -27,7 +27,7 @@ public class BorrowerDB
     public Borrower findBorrower(String borrowerID)
     {    
         Iterator<Borrower> it = borrowerElements.iterator() ; 
-        
+
         Borrower borrower = null ; 
         while(it.hasNext()) {
             borrower = it.next() ; 
@@ -50,7 +50,19 @@ public class BorrowerDB
     public void saveBorrower(Borrower borrower)
     {
         borrowerElements.add(borrower) ; 
-        
+
         System.out.println("test : saveBorower() 정상 작동 - 신규 이용자 등록 ! ") ; 
     }
+
+    /**
+     * compareTo() - 오버라이딩 필요 
+     *
+     * @param  y  메소드의 샘플 파라미터
+     * @return    x 와 y의 합
+     */
+    public int compareTo(String borrowerID)
+    {
+        return 0 ; 
+    }
+
 }
