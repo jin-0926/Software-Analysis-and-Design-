@@ -3,18 +3,18 @@ import java.util.* ;
  * BorrowerDB : 이용자 정보들을 저장하는 데이터 베이스를 수현하는 클래스. 
  *
  * @author (2025957072 강서윤)
- * @version (2026-11-04)
+ * @version (2026-11-18)
  */
 public class BorrowerDB
 {
-    private ArrayList<Borrower> borrowerElements; 
+    private TreeSet<Borrower> borrowerElements; 
 
     /**
      * NewLibMS 클래스의 객체 생성자
      */
     public BorrowerDB()
     {
-          this.borrowerElements = new ArrayList<Borrower> () ; 
+          this.borrowerElements = new TreeSet<Borrower> () ; 
           System.out.println("이용자DB가 생성되었습니다 !") ; 
     }
     

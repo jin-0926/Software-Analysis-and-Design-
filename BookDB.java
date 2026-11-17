@@ -7,14 +7,14 @@ import java.util.* ;
  */
 public class BookDB
 {
-    private ArrayList<Book> bookElements ; 
+    private TreeSet<Book> bookElements ; 
 
     /**
      * NewLibMS 클래스의 객체 생성자
      */
     public BookDB()
     {
-        this.bookElements = new ArrayList<Book> () ;     
+        this.bookElements = new TreeSet<Book> () ;     
         System.out.println("책 DB가 생성되었습니다. ") ; 
     }
     
