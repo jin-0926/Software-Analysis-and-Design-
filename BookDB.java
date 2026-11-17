@@ -7,14 +7,14 @@ import java.util.* ;
  */
 public class BookDB
 {
-    private ArrayList<Book> bookDB ; 
+    private ArrayList<Book> bookElements ; 
 
     /**
      * NewLibMS 클래스의 객체 생성자
      */
     public BookDB()
     {
-        bookDB = new ArrayList<Book> () ;     
+        this.bookElements = new ArrayList<Book> () ;     
         System.out.println("책 DB가 생성되었습니다. ") ; 
     }
     
@@ -26,7 +26,7 @@ public class BookDB
      */
     public Book findBook(String bookID)
     {
-        Iterator<Book> it = bookDB.iterator() ; 
+        Iterator<Book> it = bookElements.iterator() ; 
         Book book= null ; 
         while(it.hasNext()) {
             book = it.next() ;  // bookDB 내 책 객체를 하나씩 읽어옴. 
@@ -46,7 +46,7 @@ public class BookDB
      */
     public void saveBook(Book book)
     {
-        bookDB.add(book) ; 
+        bookElements.add(book) ; 
         System.out.println("test - BookDB - saveBook() 정상 작동 - 신규 책 등록 완료") ; 
     }
 

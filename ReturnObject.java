@@ -6,7 +6,7 @@ import java.time.*;
  * @author (2025320018 진시원)
  * @version (2026.11.16)
  */
-public class ReturnObject
+public class ReturnObject extends ReturnDB
 {
     private String borrowerID;
     private String bookID;

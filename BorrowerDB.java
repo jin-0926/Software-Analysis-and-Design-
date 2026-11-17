@@ -7,14 +7,14 @@ import java.util.* ;
  */
 public class BorrowerDB
 {
-    private ArrayList<Borrower> borrowerDB; 
+    private ArrayList<Borrower> borrowerElements; 
 
     /**
      * NewLibMS 클래스의 객체 생성자
      */
     public BorrowerDB()
     {
-          borrowerDB = new ArrayList<Borrower> () ; 
+          this.borrowerElements = new ArrayList<Borrower> () ; 
           System.out.println("이용자DB가 생성되었습니다 !") ; 
     }
     
@@ -26,7 +26,7 @@ public class BorrowerDB
      */
     public Borrower findBorrower(String borrowerID)
     {    
-        Iterator<Borrower> it = borrowerDB.iterator() ; 
+        Iterator<Borrower> it = borrowerElements.iterator() ; 
         
         Borrower borrower = null ; 
         while(it.hasNext()) {
@@ -49,7 +49,7 @@ public class BorrowerDB
      */
     public void saveBorrower(Borrower borrower)
     {
-        borrowerDB.add(borrower) ; 
+        borrowerElements.add(borrower) ; 
         
         System.out.println("test : saveBorower() 정상 작동 - 신규 이용자 등록 ! ") ; 
     }

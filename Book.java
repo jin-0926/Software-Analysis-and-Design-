@@ -73,8 +73,9 @@ public class Book
     /**
      * removeLoan() - 책과 대출객체의 연결을 없애는 메소드
      *
+     *@parm   대출 객체
      */
-    public void removeLoan()
+    public void removeLoan(Loan loan)
     {
         loanData = null;
     }

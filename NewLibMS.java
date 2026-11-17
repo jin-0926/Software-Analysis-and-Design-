@@ -1,4 +1,5 @@
 import java.util.* ; 
+import java.time.* ; 
 /**
  * NewLibMS 클래스 : 책 대출, 신규 이용자 등록, 신규 책 등록 기능을 
  * 제공하는 도서관 관리 시스템의 클래스 .  
@@ -12,6 +13,7 @@ public class NewLibMS
     private BorrowerDB borrowerDB ; 
     private LoanDB loanDB ; 
     private BookDB bookDB ; 
+    private ReturnDB returnDB ; 
 
     /**
      * NewLibMS 생성자 1 : 도서관 이름을 기본으로 지정해줌. 
@@ -90,7 +92,7 @@ public class NewLibMS
 
                     // 대출 DB에 저장
                     loanDB.saveLoan(loan) ; 
-                    
+
                     System.out.println("대출이 성공적으로 완료되었습니다 ! ") ; 
                 }
             }
@@ -103,19 +105,17 @@ public class NewLibMS
      * @param     책 제목(title), 저자(author), 책 등록번호(bookId)
      * @return    책 객체(Book)
      */
-    public String registerBoook(String title , String author, String bookID)
+    public void registerBoook(String title , String author, String bookID)
     {
         Book registeredBook = bookDB.findBook(bookID) ;   // 향후 getID() 추가 예정 
 
         if (registeredBook != null) { // 이미 등록된 책일 경우 
-            String errorMessage = "이미 등록된 책이어서 신규 등록이 불가합니다" ;   //  seq dgm과 동일하게 작성
-            return errorMessage ;  
+            System.out.println("이미 등록된 책이어서 신규 등록이 불가합니다") ;   //  seq dgm과 동일하게 작성
         }
 
         Book book = new Book(title,author,bookID) ; 
         bookDB.saveBook(book) ;   // 책DB에 저장 
-        String message = "신규 책 등록이 완료됨 !" ;  
-        return message ; 
+        System.out.println("신규 책 등록이 완료됨 !") ;  
     }
 
     /**
@@ -124,18 +124,63 @@ public class NewLibMS
      * @param    책 등록 번호 (bookID)
      * @return   책 객체 (Book)
      */
-    public String registerBorrower(String name, String borrowerID) 
+    public void registerBorrower(String name, String borrowerID) 
     {
         Borrower registeredBorrower = borrowerDB.findBorrower(borrowerID) ;  // 향후 getID() 추가 예정 
 
         if (registeredBorrower != null) { // 이미 등록된 이용자일 경우 오류 메시지 
-            String errorMessage = "이미 등록된 이용자여서 신규 등록이 불가합니다" ;  // seq dgm과 동일하게 작성
-            return errorMessage ; 
+            System.out.println("이미 등록된 이용자여서 신규 등록이 불가합니다") ;  // seq dgm과 동일하게 작성
         }
 
-        String message = "신규 이용자 등록이 가능합니다 ! " ; 
+        System.out.println("신규 이용자 등록이 가능합니다 ! "); 
         Borrower borrower = new Borrower(name, borrowerID) ; 
         borrowerDB.saveBorrower(borrower) ; 
-        return message ; 
     }
+
+    /**
+     * returnBook() : 대출한 책 1권을 반납하는 메소드 . 
+     *
+     * @param     책의 등록 번호
+     */
+    public void returnBook(String bookID)
+    {
+        Book book = bookDB.findBook(bookID) ; 
+        
+        if (book == null){
+            System.out.println("등록되지 않은 책입니다. 책 반납이 불가능합니다.") ; 
+        } else {
+            System.out.println("등록된 책입니다. 책 반납이 가능합니다.") ;
+            
+            boolean onLoan = book.isOnLoan() ; 
+            
+            if (onLoan == false) {
+                System.out.println("대출중인 책이 아닙니다. 책 반납이 불가능합니다.") ; 
+            } else  {
+                System.out.println("대출중인 책입니다. 책 반납이 가능합니다.") ; 
+                
+                // 대출 객체 찾기 
+                Loan loan = book.getLoan() ; 
+                
+                // 이용자, 대출일 찾기 
+                Borrower borrower = loan.getBorrower() ; 
+                LocalDate loanDate = loan.getLoanDate() ; 
+                
+                // 반납 객체 생성 
+                ReturnObject returnObject = new ReturnObject(borrower.getID(), bookID,loanDate) ; 
+                
+                returnDB.saveReturnObject(returnObject) ; 
+                
+                
+                // 링크 끊기 (이용자, 책 --/---> 대출)
+                borrower.removeLoan(loan) ; // removeLoan 메소드 미작성 
+                book.removeLoan(loan) ; 
+                
+                // 링크 끊기 (대출 --/---> 이용자, 책)
+                loanDB.deleteLoan(loan) ; 
+                
+                System.out.println("[반납 완료] 반납이 성공적으로 완료되었습니다 ! ") ; 
+            }
+        }
+    }
+
 }
