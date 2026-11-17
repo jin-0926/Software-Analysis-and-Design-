@@ -45,9 +45,9 @@ public class Borrower
     }
 
     /**
-     * getLoanCount() 이용자의 현재 대여 수를 반환한다.
+     * isUnderLimit() : 이용자의 대출 가능 권수에 따라 대출 가능 여부를 반환하는 메소드 
      *
-     * @return    이용자의 현재 대여 수  
+     * @return    대출 가능 권수에 따른 대출 가능 여부 
      */
     public boolean isUnderLoanLimit()
     {
@@ -72,6 +72,14 @@ public class Borrower
      */
     public void removeLoan(Loan loan)
     {
+        String bookID = loan.getBook().getID() ; 
         
+        // LoanData 순회 
+        for (Loan loan2 :loanData){
+            String bookID2= loan2.getBook().getID() ; 
+            if (bookID.equals(bookID2)){
+                loanData.remove(loan2) ; 
+            }
+        }
     }
 }

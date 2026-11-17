@@ -172,7 +172,7 @@ public class NewLibMS
                 
                 
                 // 링크 끊기 (이용자, 책 --/---> 대출)
-                borrower.removeLoan(loan) ; // removeLoan 메소드 미작성 
+                borrower.removeLoan(loan) ; //
                 book.removeLoan(loan) ; 
                 
                 // 링크 끊기 (대출 --/---> 이용자, 책)

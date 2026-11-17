@@ -32,7 +32,7 @@ public class Loan
     }
 
     /**
-     * getBorrower() - 대출한 이용자를 반환하는 메소드 
+     * getBorrower() - 대출한 이용자를 반환하는 메소드
      *
      *@return  이용자
      */
@@ -40,6 +40,17 @@ public class Loan
     {
         return borrower;
     }
+
+    /**
+     * getBook() - 대출된 책을 반환하는 메소드
+     *
+     * @return    책
+     */
+    public Book getBook()
+    {
+        return book ; 
+    }
+
 
     /**
      * getLoanDate() - 대출일을 반환하는 메소드 
