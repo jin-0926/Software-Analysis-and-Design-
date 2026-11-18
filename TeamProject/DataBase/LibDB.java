@@ -3,7 +3,8 @@ import TeamProject.DB_Elements.*;
 import java.util.*;
 
 /**
- * LibDB 클래스의 설명을 작성하세요.
+ * LibDB 추상클래스 Element를 상속상속 받는 클래스(Borrower와 Book)의 객체를 
+ * 보관하는 DB를 만드는 클래스
  *
  * @author (2025320018 진시원)
  * @version (2026.11.18)
