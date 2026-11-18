@@ -5,7 +5,7 @@ import java.util.* ;
  * @author (2025957072 강서윤)
  * @version (2026-11-18)
  */
-public class BorrowerDB implements Comparable
+public class BorrowerDB
 {
     private TreeSet<Borrower> borrowerElements; 
 

@@ -106,7 +106,7 @@ public class NewLibMS
      * @param     책 제목(title), 저자(author), 책 등록번호(bookId)
      * @return    책 객체(Book)
      */
-    public void registerBoook(String title , String author, String bookID)
+    public void registerBook(String title , String author, String bookID)
     {
         Book registeredBook = bookDB.findBook(bookID) ;   // 향후 getID() 추가 예정 
 

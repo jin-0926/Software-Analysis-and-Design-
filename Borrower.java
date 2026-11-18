@@ -66,7 +66,8 @@ public class Borrower
     }
 
     /**
-     * removeLoan(Loan loan) 이용자와 loan 객체의 연결을 끓고 해당 자리를 null로 만드는 메소드
+     * removeLoan(Loan loan) 이용자와 loan 객체의 연결을 끓고 해당 자리를 
+     * null로 만드는 메소드
      *
      * @param  책을 반납하는 과정에서 연결된 대출 객체
      */

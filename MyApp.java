@@ -8,6 +8,12 @@
 public class MyApp
 {
     public static void main(String[] args) {
-        
+        NewLibMS libMS = new NewLibMS();
+        libMS.registerBorrower("노트","1234567890ABCDEG");
+        libMS.registerBook("소분설","황석형","1234567891235");
+        libMS.registerBook("응용","황석형","1234567891234");
+        libMS.borrowBook("1234567890ABCDEG","1234567891235");
+        libMS.borrowBook("1234567890ABCDEG","1234567891234");
+        libMS.returnBook("1234567891235");
     }
 }

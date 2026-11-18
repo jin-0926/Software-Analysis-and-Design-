@@ -5,7 +5,7 @@ import java.util.* ;
  * @author (2025957072 강서윤)
  * @version (2026-11-04)
  */
-public class BookDB implements Comparable
+public class BookDB
 {
     private TreeSet<Book> bookElements ; 
 
@@ -49,17 +49,4 @@ public class BookDB implements Comparable
         bookElements.add(book) ; 
         System.out.println("test - BookDB - saveBook() 정상 작동 - 신규 책 등록 완료") ; 
     }
-
-    /**
-     * compareTo() - 오버라이딩 필요 
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
-     */
-    public int compareTo(String bookID)
-    {
-        return 0 ; 
-    }
-
-
 }
