@@ -1,8 +1,10 @@
+package TeamProject.DataBase;
+import TeamProject.DB_Elements.*;
 import java.util.* ; 
 /**
  * BorrowerDB : 이용자 정보들을 저장하는 데이터 베이스를 수현하는 클래스. 
  *
- * @author (2025957072 강서윤)
+ * @author (2025957072 강서윤, 2025320018 진시원)
  * @version (2026-11-18)
  */
 public class BorrowerDB

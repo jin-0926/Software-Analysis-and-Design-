@@ -1,8 +1,10 @@
+package TeamProject.DataBase;
+import TeamProject.DB_Elements.*;
 import java.util.* ; 
 /**
  * BookDB 클래스: 책 정보들을 저장하는 데이터 베이스를 구현하는 클래스.  
  *
- * @author (2025957072 강서윤)
+ * @author (2025957072 강서윤, 2025320018 진시원)
  * @version (2026-11-04)
  */
 public class BookDB

@@ -1,3 +1,4 @@
+package TeamProject.DB_Elements;
 
 /**
  * Element Book과 Borrower 객체에 공통된 사항을 기입한 추상클래스
@@ -12,7 +13,7 @@ public abstract class Element
      *
      * @param  대출객체(Loan)
      */
-    public abstract void attatchLoan(Loan loan);
+    public abstract void attachLoan(Loan loan);
 
     /**
      * getID() - 학번 또는 책 등록번호를 반환한다.

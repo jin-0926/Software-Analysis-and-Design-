@@ -1,3 +1,4 @@
+package TeamProject.DB_Elements;
 
 /**
  * Book 책의 정보를 담은 책 객체를 생성하는 클래스
@@ -5,7 +6,7 @@
  * @author (2025320018 진시원)
  * @version (2026.11.04)
  */
-public class Book
+public class Book extends Element
 {
     private String title;
     private String author;
@@ -78,5 +79,39 @@ public class Book
     public void removeLoan(Loan loan)
     {
         loanData = null;
+    }
+
+    /**
+     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     *
+     * @param  자바 내 객체
+     * @return "두 책은 동일하다" 라는 명제의 true, false
+     */
+    public boolean equals(Object obj)
+    {
+        Book book = (Book)obj;
+        return bookID.equals(book.getID());
+    }
+
+    /**
+     * String toString() - 이용자의 이름과 학번을로 문자열 반환한다.
+     *
+     * @return    책의제목 작가 책등록번호
+     */
+    public String toString()
+    {
+        return title + " " + author + " " + bookID;
+    }
+
+    /**
+     * int compareTo(Borrower borrower) - 두 객체의 학번을 비교하여 사전순으로
+     * 크면 양수 작으면 음수 동일하다면 0을 반환하는 메소드
+     *
+     * @param  이용자 객체
+     * @return 두개의 이용자 객체 간의 비교 결과(양수, 0, 음수)
+     */
+    public int compareTo(Book book)
+    {
+        return bookID.compareTo(book.getID());
     }
 }
