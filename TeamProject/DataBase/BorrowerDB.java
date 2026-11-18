@@ -55,16 +55,4 @@ public class BorrowerDB
 
         System.out.println("test : saveBorower() 정상 작동 - 신규 이용자 등록 ! ") ; 
     }
-
-    /**
-     * compareTo() - 오버라이딩 필요 
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
-     */
-    public int compareTo(String borrowerID)
-    {
-        return 0 ; 
-    }
-
 }
